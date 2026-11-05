@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>PlayHome TV</title>
+<style>
+  html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: transparent; color: #f2f4f8; font-family: sans-serif; }
+  #player { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+  #menu { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; padding: 50px 90px; box-sizing: border-box; background: #10141c; }
+  h1 { font-size: 56px; margin: 0 0 8px; }
+  .ayuda { font-size: 28px; color: #aab2c0; margin: 0 0 24px; }
+  .item { font-size: 34px; padding: 12px 20px; margin-bottom: 6px; border-radius: 8px; }
+  .item.activo { background: #6fd3a0; color: #10141c; }
+  .tipo { display: inline-block; width: 330px; opacity: 0.75; }
+  #info { position: absolute; left: 30px; top: 30px; width: 1860px; padding: 18px 24px; box-sizing: border-box; background: rgba(0, 0, 0, 0.72); font-size: 28px; line-height: 1.4; border-radius: 8px; display: none; white-space: pre-wrap; }
+  #subtitulo { position: absolute; left: 0; bottom: 70px; width: 1920px; text-align: center; font-size: 44px; text-shadow: 0 0 8px #000; display: none; }
+  .error { color: #ff8a8a; }
+</style>
+</head>
+<body>
+<object id="player" type="application/avplayer"></object>
+<div id="menu">
+  <h1>PlayHome TV: prueba de reproduccion</h1>
+  <p class="ayuda" id="ayuda"></p>
+  <div id="lista"></div>
+</div>
+<div id="info"></div>
+<div id="subtitulo"></div>
+<script src="$WEBAPIS/webapis/webapis.js"></script>
+<script src="streams.local.js"></script>
+<script src="prueba.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+# Listas y datos privados
+*.m3u
+*.m3u8
+*.local.js
+
+# Certificados
+*.p12
+
+# Resultado del empaquetado
+*.wgt
+author-signature.xml
+signature1.xml
+.manifest.tmp
+
+# Dependencias y compilados
+node_modules/
+dist/
+
+# Datos personales
+*.local.json
+
+# Disenos con imagenes y marcas de terceros
+Interfaz*.png

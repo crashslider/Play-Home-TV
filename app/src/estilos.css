@@ -1,0 +1,285 @@
+/* Target: Chromium 63. No flexbox gap, aspect-ratio, inset or backdrop-filter. */
+:root {
+  --fondo: #050b1f;
+  --panel: rgba(16, 28, 58, 0.72);
+  --panel-claro: rgba(40, 62, 110, 0.32);
+  --borde: rgba(120, 170, 230, 0.26);
+  --texto: #f2f6ff;
+  --texto-suave: #a9b7d4;
+  --cian: #22d3ee;
+  --acento: #22d3ee;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+  color: var(--texto);
+  font-family: 'Samsung One', 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+#escenario {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+  transform-origin: 0 0;
+}
+
+.icono { flex: none; }
+
+.pantalla {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1920px;
+  height: 1080px;
+  padding: 40px 56px;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='0' y1='0' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%231f8fff' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%2322d3ee' stop-opacity='.42'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' x1='1' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23129bd8' stop-opacity='.5'/%3E%3Cstop offset='1' stop-color='%231f6bff' stop-opacity='0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M700 1080c260-40 420-150 650-190 210-37 390-20 570-110v300z' fill='url(%23a)'/%3E%3Cpath d='M1000 1080c220-20 400-90 560-110 140-18 260-10 360-50v160z' fill='url(%23a)'/%3E%3Cpath d='M0 0h430c-40 110-130 170-230 215C110 255 50 310 0 400z' fill='url(%23b)'/%3E%3C/svg%3E") 0 0 / 1920px 1080px no-repeat,
+    radial-gradient(1100px 620px at 100% 110%, rgba(25, 120, 240, 0.42), transparent 70%),
+    radial-gradient(900px 520px at -8% -10%, rgba(10, 160, 220, 0.38), transparent 70%),
+    linear-gradient(160deg, #071233 0%, var(--fondo) 55%, #03081a 100%);
+}
+
+/* Focus: the only thing a remote-control user can rely on, so it must always be obvious. */
+.con-foco {
+  border-color: var(--acento) !important;
+  box-shadow: 0 0 0 3px var(--acento), 0 0 34px rgba(34, 211, 238, 0.55);
+}
+
+/* Logo */
+.logo { display: flex; align-items: center; }
+.logo-svg { width: 190px; height: 158px; margin-right: 26px; }
+.logo-texto { font-size: 64px; font-weight: 700; white-space: nowrap; }
+.logo-texto b { color: var(--cian); }
+.logo-pequeno .logo-svg { width: 88px; height: 74px; margin-right: 16px; }
+.logo-pequeno .logo-texto { font-size: 36px; }
+
+/* Perfiles */
+.pantalla-perfiles { display: flex; flex-direction: column; align-items: center; padding-top: 90px; }
+.pregunta { font-size: 60px; font-weight: 500; margin: 56px 0 72px; }
+.fila-perfiles { display: flex; }
+.tarjeta-perfil {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 280px;
+  height: 320px;
+  margin: 0 22px;
+  background: var(--panel);
+  border: 3px solid var(--borde);
+  border-radius: 26px;
+}
+.tarjeta-perfil span { margin-top: 26px; font-size: 40px; color: var(--texto); }
+.tarjeta-perfil.con-foco { transform: scale(1.06); }
+.boton-ajustes {
+  position: absolute;
+  right: 70px;
+  bottom: 56px;
+  display: flex;
+  padding: 16px;
+  color: var(--texto-suave);
+  border: 3px solid transparent;
+  border-radius: 50%;
+}
+.boton-ajustes.con-foco { color: var(--texto); }
+
+/* Encabezado */
+.encabezado { display: flex; align-items: center; height: 96px; }
+.encabezado-centro { flex: 1; display: flex; justify-content: center; }
+.chip-perfil { display: flex; align-items: center; padding: 8px 22px 8px 8px; font-size: 30px; border: 3px solid transparent; border-radius: 40px; }
+.chip-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  margin-right: 14px;
+  border-radius: 50%;
+  background: var(--panel-claro);
+}
+
+/* Inicio */
+.fila-secciones { display: flex; justify-content: center; margin-top: 130px; }
+.tarjeta-seccion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 540px;
+  height: 500px;
+  margin: 0 18px;
+  border: 3px solid var(--borde);
+  border-radius: 32px;
+}
+.tarjeta-seccion span { margin-top: 34px; font-size: 58px; font-weight: 700; color: var(--texto); }
+.seccion-vivo { background: linear-gradient(150deg, #0d2a66, #07163c 70%, #0a4b8f); }
+.seccion-series { background: linear-gradient(150deg, #2c1d6b, #150f3c 70%, #4a23a0); }
+.seccion-peliculas { background: linear-gradient(150deg, #0c3f4a, #08242e 70%, #0b6a6a); }
+.tarjeta-seccion.con-foco { transform: scale(1.04); }
+.seccion-series.con-foco { --acento: #a78bfa; box-shadow: 0 0 0 3px #a78bfa, 0 0 34px rgba(167, 139, 250, 0.55); }
+.seccion-peliculas.con-foco { --acento: #2dd4bf; box-shadow: 0 0 0 3px #2dd4bf, 0 0 34px rgba(45, 212, 191, 0.55); }
+
+/* Pestanas */
+.pestanas { display: flex; padding: 6px; background: var(--panel); border-radius: 44px; }
+.pestana {
+  display: flex;
+  align-items: center;
+  padding: 12px 34px;
+  font-size: 30px;
+  color: var(--texto-suave);
+  border: 3px solid transparent;
+  border-radius: 36px;
+}
+.pestana span { margin-left: 12px; }
+.pestana.activa { color: var(--texto); border-color: var(--acento); }
+
+/* Explorar */
+.cuerpo { display: flex; height: 880px; margin-top: 24px; }
+.categorias, .temporadas { flex: none; width: 430px; padding: 16px; background: var(--panel); border-radius: 22px; margin-right: 26px; }
+.categoria {
+  display: flex;
+  align-items: center;
+  height: 72px;
+  margin-bottom: 10px;
+  padding: 0 18px;
+  font-size: 28px;
+  color: var(--texto-suave);
+  border: 3px solid transparent;
+  border-radius: 16px;
+}
+.categoria.activa { color: var(--texto); background: var(--panel-claro); }
+.categoria-nombre { flex: 1; margin-left: 16px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.categoria-total { margin-left: 12px; font-size: 22px; color: var(--texto-suave); }
+.temporadas .categoria-nombre { margin-left: 0; }
+
+.vacio { flex: 1; display: flex; align-items: center; justify-content: center; font-size: 34px; color: var(--texto-suave); }
+
+/* En vivo */
+.vivo { flex: 1; display: flex; min-width: 0; }
+.canales, .episodios { flex: none; width: 500px; margin-right: 26px; }
+.episodios { flex: 1; margin-right: 0; min-width: 0; }
+.canal {
+  display: flex;
+  align-items: center;
+  height: 78px;
+  margin-bottom: 10px;
+  padding: 0 18px;
+  font-size: 28px;
+  color: var(--texto-suave);
+  background: var(--panel);
+  border: 3px solid transparent;
+  border-radius: 16px;
+}
+.canal.activa { color: var(--texto); }
+.canal-numero { flex: none; width: 54px; font-size: 22px; color: var(--texto-suave); }
+.canal-logo { flex: none; width: 76px; height: 54px; margin-right: 16px; object-fit: contain; }
+.canal-logo .icono { width: 34px; height: 34px; }
+.canal-nombre { flex: 1; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+
+.vista-previa { flex: 1; min-width: 0; background: var(--panel); border-radius: 22px; overflow: hidden; align-self: flex-start; }
+.vista-previa-imagen {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  background: linear-gradient(135deg, #0c2a5e, #06122f);
+}
+.vista-previa-logo { width: 300px; height: 220px; object-fit: contain; }
+.vista-previa-imagen .insignia-vivo { position: absolute; right: 18px; top: 18px; }
+.vista-previa-info { padding: 26px 30px; }
+.vista-previa-info h2 { margin: 0 0 8px; font-size: 42px; }
+.vista-previa-info p { margin: 0; font-size: 26px; color: var(--texto-suave); }
+.insignia-vivo { padding: 8px 16px; font-size: 26px; font-weight: 700; background: #d6202f; border-radius: 8px; }
+.sin-imagen { display: flex; align-items: center; justify-content: center; color: var(--texto-suave); }
+
+/* Rejilla */
+.rejilla { flex: 1; display: flex; flex-wrap: wrap; align-content: flex-start; min-width: 0; }
+.poster {
+  position: relative;
+  width: 258px;
+  height: 400px;
+  margin: 0 16px 24px 0;
+  overflow: hidden;
+  background: var(--panel);
+  border: 3px solid var(--borde);
+  border-radius: 18px;
+}
+.poster-imagen { display: block; width: 100%; height: 100%; object-fit: cover; }
+/* Posters usually include their own title, so it only appears on focus or without an image. */
+.poster-titulo {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 44px 14px 14px;
+  font-size: 24px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+}
+.poster.con-foco .poster-titulo, .sin-imagen + .poster-titulo { display: block; }
+.poster.con-foco { transform: scale(1.04); z-index: 1; }
+
+/* Serie */
+.serie-lado { flex: none; width: 380px; margin-right: 26px; }
+.serie-poster { display: block; width: 380px; height: 570px; object-fit: cover; border-radius: 18px; background: var(--panel); }
+.serie-lado h1 { margin: 22px 0 0; font-size: 40px; }
+
+/* Reproductor */
+.pantalla-reproductor { padding: 0; background: #000; }
+.video { width: 1920px; height: 1080px; background: #000; }
+.barra-reproductor {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  padding: 90px 60px 44px;
+  font-size: 34px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.88));
+}
+.barra-reproductor .insignia-vivo { margin-right: 22px; }
+.barra-titulo { flex: 1; font-weight: 600; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.barra-ayuda { margin-left: 24px; font-size: 26px; color: var(--texto-suave); }
+.aviso-reproductor { position: absolute; left: 260px; top: 340px; width: 1400px; padding: 44px; text-align: center; background: var(--panel); border-radius: 22px; }
+.aviso-reproductor h2 { margin: 0 0 18px; font-size: 44px; }
+.aviso-reproductor p { margin: 8px 0; font-size: 30px; color: var(--texto-suave); }
+
+/* Configuracion */
+.pantalla-config h1 { margin: 40px 0 48px; font-size: 56px; }
+.config-etiqueta { display: block; margin-bottom: 14px; font-size: 30px; color: var(--texto-suave); }
+.config-campo {
+  display: block;
+  width: 1500px;
+  height: 84px;
+  padding: 0 24px;
+  font: inherit;
+  font-size: 30px;
+  color: var(--texto);
+  background: var(--panel);
+  border: 3px solid var(--borde);
+  border-radius: 16px;
+  outline: none;
+}
+.config-boton {
+  display: inline-block;
+  margin: 32px 0;
+  padding: 20px 44px;
+  font-size: 32px;
+  font-weight: 600;
+  background: var(--panel-claro);
+  border: 3px solid var(--borde);
+  border-radius: 16px;
+}
+.config-estado { margin: 10px 0; font-size: 30px; }
+.config-ayuda { margin-top: 50px; font-size: 26px; color: var(--texto-suave); }
